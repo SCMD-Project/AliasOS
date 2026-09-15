@@ -1,0 +1,77 @@
+export function aos_ahelp()
+{
+    tty_line = 120; __aos_tty_emit();
+    tty_line = 99; __aos_tty_emit();
+    tty_line = 100; __aos_tty_emit();
+    tty_line = 101; __aos_tty_emit();
+    tty_line = 102; __aos_tty_emit();
+    tty_line = 103; __aos_tty_emit();
+    __aos_tty_redraw();
+}
+
+export function aos_ls()
+{
+    tty_line = 121; __aos_tty_emit(); fs_target = fs_cwd; __aos_fs_list_target(); __aos_tty_redraw();
+}
+
+export function aos_pwd()
+{
+    tty_line = 123; __aos_tty_emit();
+    tty_line = 118; __aos_tty_emit();
+    if(fs_path_depth == 0) { tty_line = 119; __aos_tty_emit(); }
+    if(fs_path_depth > 0) { tty_line = fs_path[0] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 1) { tty_line = fs_path[1] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 2) { tty_line = fs_path[2] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 3) { tty_line = fs_path[3] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 4) { tty_line = fs_path[4] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 5) { tty_line = fs_path[5] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 6) { tty_line = fs_path[6] + 32; __aos_tty_emit(); }
+    if(fs_path_depth > 7) { tty_line = fs_path[7] + 32; __aos_tty_emit(); }
+    __aos_tty_redraw();
+}
+
+export function aos_ps()
+{
+    tty_line = 131; __aos_tty_emit(); tty_line = 87; __aos_tty_emit(); tty_line = 88; __aos_tty_emit(); if(counter_running) { tty_line = 89; __aos_tty_emit(); } __aos_tty_redraw();
+}
+
+export function aos_df()
+{
+    tty_line = 133; __aos_tty_emit(); tty_line = 86; __aos_tty_emit(); __aos_fs_df(); __aos_tty_redraw();
+}
+
+export function aos_cls()
+{
+    __aos_tty_clear_history(); tty_line = 0; __aos_tty_redraw();
+}
+
+export resident function aos_redraw()
+{
+    __aos_tty_redraw();
+}
+
+export function aos_version()
+{
+    tty_line = 138; __aos_tty_emit(); tty_line = 64; __aos_tty_emit(); tty_line = 104; __aos_tty_emit(); tty_line = 105; __aos_tty_emit(); __aos_tty_redraw();
+}
+
+export function aos_sysinfo()
+{
+    tty_line = 63; __aos_tty_emit(); aos_sysinfo_run();
+}
+
+export function aos_counter()
+{
+    if(sh_mode != 0) { input_token = 20; __aos_input_token(); return; }
+    tty_line = 137; __aos_tty_emit();
+    if(counter_running) { tty_line = 98; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    counter_running = true; counter_value = 0; tty_line = 91; __aos_tty_emit(); __aos_tty_redraw();
+    while(counter_running && counter_value < 5)
+    {
+        wait 500ms;
+        if(counter_running) { counter_value += 1; tty_line = 91 + counter_value; __aos_tty_emit(); }
+    }
+    if(counter_running) { tty_line = 97; __aos_tty_emit(); }
+    counter_running = false; __aos_tty_redraw();
+}
+

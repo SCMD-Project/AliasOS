@@ -1,0 +1,12 @@
+touch
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_1 "echoln 这是运行时才输入的字符串;echoln CS2里真的写进去了";rawready
+end
+cat
+arg_test
+end
+:screen 28

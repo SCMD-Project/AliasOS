@@ -1,0 +1,7 @@
+function main()
+{
+    aos_kernel_run();
+    command.exec("exec aliasos/public");
+    aos_booting = false;
+    command.exec("exec_async aliasos/boot_show");
+}

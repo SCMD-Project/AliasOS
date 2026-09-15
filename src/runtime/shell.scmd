@@ -1,0 +1,812 @@
+export function __aos_begin_args()
+{
+    sh_mode = 1; sh_argc = 0;
+    sh_argv[0] = 0;
+    sh_argv[1] = 0;
+    sh_argv[2] = 0;
+    sh_argv[3] = 0;
+    sh_argv[4] = 0;
+    sh_argv[5] = 0;
+    sh_argv[6] = 0;
+    sh_argv[7] = 0;
+    tty_line = 70; __aos_tty_emit();
+}
+
+export function __aos_append_arg()
+{
+    if(sh_argc == 0) { sh_argv[0] = input_token; sh_argc = 1; return; }
+    if(sh_argc == 1) { sh_argv[1] = input_token; sh_argc = 2; return; }
+    if(sh_argc == 2) { sh_argv[2] = input_token; sh_argc = 3; return; }
+    if(sh_argc == 3) { sh_argv[3] = input_token; sh_argc = 4; return; }
+    if(sh_argc == 4) { sh_argv[4] = input_token; sh_argc = 5; return; }
+    if(sh_argc == 5) { sh_argv[5] = input_token; sh_argc = 6; return; }
+    if(sh_argc == 6) { sh_argv[6] = input_token; sh_argc = 7; return; }
+    if(sh_argc == 7) { sh_argv[7] = input_token; sh_argc = 8; return; }
+    tty_line = 71; __aos_tty_emit();
+}
+
+export function __aos_input_token()
+{
+    if(sh_mode == 0) { tty_line = 69; __aos_tty_emit(); return; }
+    tty_line = 156 + input_token; __aos_tty_emit();
+    if(sh_mode == 1) { __aos_append_arg(); return; }
+    if(sh_mode == 2) {
+        if(write_count >= 64) { tty_line = 85; __aos_tty_emit(); return; }
+        if(write_count < 32) {
+            if(write_count < 16) {
+                if(write_count < 8) {
+                    if(write_count < 4) {
+                        if(write_count < 2) {
+                            if(write_count < 1) {
+                                write_buf[0] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[1] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 3) {
+                                write_buf[2] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[3] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 6) {
+                            if(write_count < 5) {
+                                write_buf[4] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[5] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 7) {
+                                write_buf[6] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[7] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                } else {
+                    if(write_count < 12) {
+                        if(write_count < 10) {
+                            if(write_count < 9) {
+                                write_buf[8] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[9] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 11) {
+                                write_buf[10] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[11] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 14) {
+                            if(write_count < 13) {
+                                write_buf[12] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[13] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 15) {
+                                write_buf[14] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[15] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(write_count < 24) {
+                    if(write_count < 20) {
+                        if(write_count < 18) {
+                            if(write_count < 17) {
+                                write_buf[16] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[17] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 19) {
+                                write_buf[18] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[19] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 22) {
+                            if(write_count < 21) {
+                                write_buf[20] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[21] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 23) {
+                                write_buf[22] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[23] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                } else {
+                    if(write_count < 28) {
+                        if(write_count < 26) {
+                            if(write_count < 25) {
+                                write_buf[24] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[25] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 27) {
+                                write_buf[26] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[27] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 30) {
+                            if(write_count < 29) {
+                                write_buf[28] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[29] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 31) {
+                                write_buf[30] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[31] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if(write_count < 48) {
+                if(write_count < 40) {
+                    if(write_count < 36) {
+                        if(write_count < 34) {
+                            if(write_count < 33) {
+                                write_buf[32] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[33] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 35) {
+                                write_buf[34] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[35] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 38) {
+                            if(write_count < 37) {
+                                write_buf[36] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[37] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 39) {
+                                write_buf[38] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[39] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                } else {
+                    if(write_count < 44) {
+                        if(write_count < 42) {
+                            if(write_count < 41) {
+                                write_buf[40] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[41] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 43) {
+                                write_buf[42] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[43] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 46) {
+                            if(write_count < 45) {
+                                write_buf[44] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[45] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 47) {
+                                write_buf[46] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[47] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(write_count < 56) {
+                    if(write_count < 52) {
+                        if(write_count < 50) {
+                            if(write_count < 49) {
+                                write_buf[48] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[49] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 51) {
+                                write_buf[50] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[51] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 54) {
+                            if(write_count < 53) {
+                                write_buf[52] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[53] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 55) {
+                                write_buf[54] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[55] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                } else {
+                    if(write_count < 60) {
+                        if(write_count < 58) {
+                            if(write_count < 57) {
+                                write_buf[56] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[57] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 59) {
+                                write_buf[58] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[59] = input_token; write_count += 1; return;
+                            }
+                        }
+                    } else {
+                        if(write_count < 62) {
+                            if(write_count < 61) {
+                                write_buf[60] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[61] = input_token; write_count += 1; return;
+                            }
+                        } else {
+                            if(write_count < 63) {
+                                write_buf[62] = input_token; write_count += 1; return;
+                            } else {
+                                write_buf[63] = input_token; write_count += 1; return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if(sh_mode == 3) { tty_line = 30; __aos_tty_emit(); return; }
+}
+
+export function __aos_resolve_all_args()
+{
+    fs_target = fs_cwd; fs_path_ok = true;
+    if(sh_argc > 0) { fs_name = sh_argv[0]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 1) { fs_name = sh_argv[1]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 2) { fs_name = sh_argv[2]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 3) { fs_name = sh_argv[3]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 4) { fs_name = sh_argv[4]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 5) { fs_name = sh_argv[5]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 6) { fs_name = sh_argv[6]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 7) { fs_name = sh_argv[7]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+}
+
+export function __aos_resolve_parent_name()
+{
+    fs_target = fs_cwd; fs_path_ok = true;
+    if(sh_argc == 0) { fs_path_ok = false; return; }
+    if(sh_argc > 1) { fs_name = sh_argv[0]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 2) { fs_name = sh_argv[1]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 3) { fs_name = sh_argv[2]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 4) { fs_name = sh_argv[3]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 5) { fs_name = sh_argv[4]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 6) { fs_name = sh_argv[5]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc > 7) { fs_name = sh_argv[6]; __aos_fs_step_dir(); if(!fs_path_ok) { return; } }
+    if(sh_argc == 1) { fs_name = sh_argv[0]; return; }
+    if(sh_argc == 2) { fs_name = sh_argv[1]; return; }
+    if(sh_argc == 3) { fs_name = sh_argv[2]; return; }
+    if(sh_argc == 4) { fs_name = sh_argv[3]; return; }
+    if(sh_argc == 5) { fs_name = sh_argv[4]; return; }
+    if(sh_argc == 6) { fs_name = sh_argv[5]; return; }
+    if(sh_argc == 7) { fs_name = sh_argv[6]; return; }
+    if(sh_argc == 8) { fs_name = sh_argv[7]; return; }
+    fs_path_ok = false;
+}
+
+export function __aos_path_push_token()
+{
+    if(input_token == 17) { fs_path_depth = 0; return; }
+    if(input_token == 18) { if(fs_path_depth > 0) { fs_path_depth -= 1; } return; }
+    if(fs_path_depth == 0) { fs_path[0] = input_token; fs_path_depth = 1; return; }
+    if(fs_path_depth == 1) { fs_path[1] = input_token; fs_path_depth = 2; return; }
+    if(fs_path_depth == 2) { fs_path[2] = input_token; fs_path_depth = 3; return; }
+    if(fs_path_depth == 3) { fs_path[3] = input_token; fs_path_depth = 4; return; }
+    if(fs_path_depth == 4) { fs_path[4] = input_token; fs_path_depth = 5; return; }
+    if(fs_path_depth == 5) { fs_path[5] = input_token; fs_path_depth = 6; return; }
+    if(fs_path_depth == 6) { fs_path[6] = input_token; fs_path_depth = 7; return; }
+    if(fs_path_depth == 7) { fs_path[7] = input_token; fs_path_depth = 8; return; }
+}
+
+export function __aos_apply_cd_args_to_path()
+{
+    if(sh_argc > 0) { input_token = sh_argv[0]; __aos_path_push_token(); }
+    if(sh_argc > 1) { input_token = sh_argv[1]; __aos_path_push_token(); }
+    if(sh_argc > 2) { input_token = sh_argv[2]; __aos_path_push_token(); }
+    if(sh_argc > 3) { input_token = sh_argv[3]; __aos_path_push_token(); }
+    if(sh_argc > 4) { input_token = sh_argv[4]; __aos_path_push_token(); }
+    if(sh_argc > 5) { input_token = sh_argv[5]; __aos_path_push_token(); }
+    if(sh_argc > 6) { input_token = sh_argv[6]; __aos_path_push_token(); }
+    if(sh_argc > 7) { input_token = sh_argv[7]; __aos_path_push_token(); }
+}
+
+export function __aos_cmd_ls_arg()
+{
+    if(sh_argc == 0) { fs_target = fs_cwd; __aos_fs_list_target(); return; }
+    __aos_resolve_all_args();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    __aos_fs_list_target();
+}
+
+function __aos_cmd_cd()
+{
+    if(sh_argc == 0) { fs_cwd = 0; fs_path_depth = 0; return; }
+    __aos_resolve_all_args();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    fs_cwd = fs_target; __aos_apply_cd_args_to_path();
+}
+
+export function __aos_cmd_mkdir()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240 || fs_name == 17 || fs_name == 18) { tty_line = 117; __aos_tty_emit(); return; }
+    fs_create_dir = true; __aos_fs_create();
+}
+
+export function __aos_cmd_touch()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240 || fs_name == 17 || fs_name == 18) { tty_line = 117; __aos_tty_emit(); return; }
+    fs_create_dir = false; __aos_fs_create();
+}
+
+function __aos_cmd_cat()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target == 241 && fs_name == 19) { tty_line = 64; __aos_tty_emit(); tty_line = 65; __aos_tty_emit(); return; }
+    if(fs_target == 241 && fs_name == 24) { tty_line = 64; __aos_tty_emit(); tty_line = 104; __aos_tty_emit(); return; }
+    if(fs_target == 241 && fs_name == 25) { tty_line = 12; __aos_tty_emit(); return; }
+    if(fs_target == 242 && (fs_name == 26 || fs_name == 28)) { tty_line = 87; __aos_tty_emit(); tty_line = 88; __aos_tty_emit(); if(counter_running) { tty_line = 89; __aos_tty_emit(); } return; }
+    if(fs_target == 242 && fs_name == 27) { tty_line = 86; __aos_tty_emit(); tty_line = 110; __aos_tty_emit(); __aos_fs_df(); return; }
+    if(fs_target >= 240) { tty_line = 74; __aos_tty_emit(); return; }
+    __aos_fs_find();
+    if(fs_found == 255) { tty_line = 74; __aos_tty_emit(); return; }
+    if(fs_found == 1 && fs_dir[1]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 2 && fs_dir[2]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 3 && fs_dir[3]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 4 && fs_dir[4]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 5 && fs_dir[5]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 6 && fs_dir[6]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 7 && fs_dir[7]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 8 && fs_dir[8]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 9 && fs_dir[9]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 10 && fs_dir[10]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 11 && fs_dir[11]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 12 && fs_dir[12]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 13 && fs_dir[13]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 14 && fs_dir[14]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 15 && fs_dir[15]) { tty_line = 82; __aos_tty_emit(); return; }
+    __aos_fs_cat_found();
+}
+
+function __aos_cmd_write()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240) { tty_line = 117; __aos_tty_emit(); return; }
+    __aos_fs_find();
+    if(fs_found == 255) { tty_line = 74; __aos_tty_emit(); return; }
+    if(fs_found == 1 && fs_dir[1]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 2 && fs_dir[2]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 3 && fs_dir[3]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 4 && fs_dir[4]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 5 && fs_dir[5]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 6 && fs_dir[6]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 7 && fs_dir[7]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 8 && fs_dir[8]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 9 && fs_dir[9]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 10 && fs_dir[10]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 11 && fs_dir[11]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 12 && fs_dir[12]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 13 && fs_dir[13]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 14 && fs_dir[14]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 15 && fs_dir[15]) { tty_line = 82; __aos_tty_emit(); return; }
+    write_inode = fs_found; write_count = 0; sh_mode = 2; tty_line = 83; __aos_tty_emit();
+}
+
+export function __aos_cmd_writeraw()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240) { tty_line = 117; __aos_tty_emit(); return; }
+    __aos_fs_find();
+    if(fs_found == 255) { tty_line = 74; __aos_tty_emit(); return; }
+    if(fs_found == 1 && fs_dir[1]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 2 && fs_dir[2]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 3 && fs_dir[3]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 4 && fs_dir[4]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 5 && fs_dir[5]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 6 && fs_dir[6]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 7 && fs_dir[7]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 8 && fs_dir[8]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 9 && fs_dir[9]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 10 && fs_dir[10]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 11 && fs_dir[11]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 12 && fs_dir[12]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 13 && fs_dir[13]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 14 && fs_dir[14]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 15 && fs_dir[15]) { tty_line = 82; __aos_tty_emit(); return; }
+    write_inode = fs_found; write_count = 0; __aos_fs_begin_raw_write(); if(write_raw_obj == 255) { tty_line = 106; __aos_tty_emit(); return; } sh_mode = 3; tty_line = 30; __aos_tty_emit(); tty_line = 31; __aos_tty_emit(); tty_line = 32; __aos_tty_emit(); __aos_tty_redraw();
+}
+
+export function __aos_cmd_rm()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240) { tty_line = 117; __aos_tty_emit(); return; }
+    __aos_fs_find();
+    if(fs_found == 255) { tty_line = 74; __aos_tty_emit(); return; }
+    if(fs_found == 1 && fs_dir[1]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 2 && fs_dir[2]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 3 && fs_dir[3]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 4 && fs_dir[4]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 5 && fs_dir[5]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 6 && fs_dir[6]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 7 && fs_dir[7]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 8 && fs_dir[8]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 9 && fs_dir[9]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 10 && fs_dir[10]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 11 && fs_dir[11]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 12 && fs_dir[12]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 13 && fs_dir[13]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 14 && fs_dir[14]) { tty_line = 82; __aos_tty_emit(); return; }
+    if(fs_found == 15 && fs_dir[15]) { tty_line = 82; __aos_tty_emit(); return; }
+    __aos_fs_clear_found(); tty_line = 79; __aos_tty_emit();
+}
+
+export function __aos_cmd_rmdir()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    __aos_resolve_parent_name();
+    if(!fs_path_ok) { tty_line = 107; __aos_tty_emit(); return; }
+    if(fs_target >= 240) { tty_line = 117; __aos_tty_emit(); return; }
+    __aos_fs_find();
+    if(fs_found == 255) { tty_line = 74; __aos_tty_emit(); return; }
+    if(fs_found == 1 && !fs_dir[1]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 2 && !fs_dir[2]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 3 && !fs_dir[3]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 4 && !fs_dir[4]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 5 && !fs_dir[5]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 6 && !fs_dir[6]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 7 && !fs_dir[7]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 8 && !fs_dir[8]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 9 && !fs_dir[9]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 10 && !fs_dir[10]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 11 && !fs_dir[11]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 12 && !fs_dir[12]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 13 && !fs_dir[13]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 14 && !fs_dir[14]) { tty_line = 81; __aos_tty_emit(); return; }
+    if(fs_found == 15 && !fs_dir[15]) { tty_line = 81; __aos_tty_emit(); return; }
+    __aos_fs_found_child_count(); if(fs_used_count != 0) { tty_line = 80; __aos_tty_emit(); return; }
+    __aos_fs_clear_found(); tty_line = 79; __aos_tty_emit();
+}
+
+export function __aos_cmd_taskkill()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    if(sh_argv[0] == 20 && counter_running) { counter_running = false; tty_line = 79; __aos_tty_emit(); return; }
+    tty_line = 90; __aos_tty_emit();
+}
+
+export function __aos_cmd_echo()
+{
+    if(sh_argc == 0) { tty_line = 73; __aos_tty_emit(); return; }
+    if(sh_argc > 0) { tty_line = sh_argv[0]; __aos_tty_emit(); }
+    if(sh_argc > 1) { tty_line = sh_argv[1]; __aos_tty_emit(); }
+    if(sh_argc > 2) { tty_line = sh_argv[2]; __aos_tty_emit(); }
+    if(sh_argc > 3) { tty_line = sh_argv[3]; __aos_tty_emit(); }
+    if(sh_argc > 4) { tty_line = sh_argv[4]; __aos_tty_emit(); }
+    if(sh_argc > 5) { tty_line = sh_argv[5]; __aos_tty_emit(); }
+    if(sh_argc > 6) { tty_line = sh_argv[6]; __aos_tty_emit(); }
+    if(sh_argc > 7) { tty_line = sh_argv[7]; __aos_tty_emit(); }
+}
+
+function __aos_execute_pending()
+{
+    if(sh_pending == 1) { __aos_cmd_ls_arg(); return; }
+    if(sh_pending == 2) { __aos_cmd_cd(); return; }
+    if(sh_pending == 3) { __aos_cmd_mkdir(); return; }
+    if(sh_pending == 4) { __aos_cmd_touch(); return; }
+    if(sh_pending == 5) { __aos_cmd_cat(); return; }
+    if(sh_pending == 6) { __aos_cmd_write(); return; }
+    if(sh_pending == 7) { __aos_cmd_writeraw(); return; }
+    if(sh_pending == 8) { __aos_cmd_rm(); return; }
+    if(sh_pending == 9) { __aos_cmd_rmdir(); return; }
+    if(sh_pending == 10) { __aos_cmd_taskkill(); return; }
+    if(sh_pending == 11) { __aos_cmd_echo(); return; }
+    tty_line = 111; __aos_tty_emit();
+}
+
+export function aos_ls_args()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 122; __aos_tty_emit(); sh_pending = 1; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_cd()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 124; __aos_tty_emit(); sh_pending = 2; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_mkdir()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 125; __aos_tty_emit(); sh_pending = 3; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_touch()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 126; __aos_tty_emit(); sh_pending = 4; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_cat()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 127; __aos_tty_emit(); sh_pending = 5; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_writetok()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 29; __aos_tty_emit(); sh_pending = 6; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_write()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 128; __aos_tty_emit(); sh_pending = 7; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_writeraw()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 128; __aos_tty_emit(); sh_pending = 7; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_rm()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 129; __aos_tty_emit(); sh_pending = 8; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_rmdir()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 130; __aos_tty_emit(); sh_pending = 9; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_taskkill()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 132; __aos_tty_emit(); sh_pending = 10; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_echo_args()
+{
+    if(sh_mode != 0) { tty_line = 116; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 136; __aos_tty_emit(); sh_pending = 11; __aos_begin_args(); __aos_tty_redraw();
+}
+
+export function aos_end()
+{
+    tty_line = 187; __aos_tty_emit();
+    if(sh_mode == 1) { __aos_execute_pending(); if(sh_mode == 1) { sh_mode = 0; } __aos_tty_redraw(); return; }
+    if(sh_mode == 2) { __aos_fs_commit_write(); sh_mode = 0; __aos_tty_redraw(); return; }
+    if(sh_mode == 3) { if(raw_ready) { __aos_fs_commit_raw_write(); sh_mode = 0; raw_ready = false; __aos_tty_redraw(); return; } tty_line = 61; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 111; __aos_tty_emit(); __aos_tty_redraw();
+}
+
+export resident function aos_rawready()
+{
+    if(sh_mode == 3) { raw_ready = true; tty_line = 62; __aos_tty_emit(); __aos_tty_redraw(); return; }
+    tty_line = 111; __aos_tty_emit(); __aos_tty_redraw();
+}
+
+export function aos_back()
+{
+    tty_line = 188; __aos_tty_emit();
+    if(sh_mode == 1 && sh_argc > 0) { sh_argc -= 1; __aos_tty_redraw(); return; }
+    if(sh_mode == 2 && write_count > 0) { write_count -= 1; __aos_tty_redraw(); return; }
+    __aos_tty_redraw();
+}
+
+export function aos_args()
+{
+    tty_line = 189; __aos_tty_emit(); tty_line = 109; __aos_tty_emit();
+    if(sh_argc > 0) { tty_line = sh_argv[0]; __aos_tty_emit(); }
+    if(sh_argc > 1) { tty_line = sh_argv[1]; __aos_tty_emit(); }
+    if(sh_argc > 2) { tty_line = sh_argv[2]; __aos_tty_emit(); }
+    if(sh_argc > 3) { tty_line = sh_argv[3]; __aos_tty_emit(); }
+    if(sh_argc > 4) { tty_line = sh_argv[4]; __aos_tty_emit(); }
+    if(sh_argc > 5) { tty_line = sh_argv[5]; __aos_tty_emit(); }
+    if(sh_argc > 6) { tty_line = sh_argv[6]; __aos_tty_emit(); }
+    if(sh_argc > 7) { tty_line = sh_argv[7]; __aos_tty_emit(); }
+    __aos_tty_redraw();
+}
+
+export function aos_cancel()
+{
+    tty_line = 190; __aos_tty_emit(); if(sh_mode == 3) { __aos_raw_release_pending(); } sh_mode = 0; sh_argc = 0; write_count = 0; write_inode = 255; raw_ready = false; tty_line = 72; __aos_tty_emit(); __aos_tty_redraw();
+}
+
+export function aos_arg_home()
+{
+    input_token = 1; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_tmp()
+{
+    input_token = 2; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_docs()
+{
+    input_token = 3; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_notes()
+{
+    input_token = 4; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_hello()
+{
+    input_token = 5; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_readme()
+{
+    input_token = 6; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_project()
+{
+    input_token = 7; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_test()
+{
+    input_token = 8; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_foo()
+{
+    input_token = 9; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_bar()
+{
+    input_token = 10; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_world()
+{
+    input_token = 11; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_aliasos()
+{
+    input_token = 12; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_scmd()
+{
+    input_token = 13; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_vcs16()
+{
+    input_token = 14; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_line1()
+{
+    input_token = 15; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_line2()
+{
+    input_token = 16; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_root()
+{
+    input_token = 17; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_dotdot()
+{
+    input_token = 18; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_motd()
+{
+    input_token = 19; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_counter()
+{
+    input_token = 20; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_bin()
+{
+    input_token = 21; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_etc()
+{
+    input_token = 22; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_proc()
+{
+    input_token = 23; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_version()
+{
+    input_token = 24; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_hostname()
+{
+    input_token = 25; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_status()
+{
+    input_token = 26; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_meminfo()
+{
+    input_token = 27; __aos_input_token(); __aos_tty_redraw();
+}
+
+export function aos_arg_tasks()
+{
+    input_token = 28; __aos_input_token(); __aos_tty_redraw();
+}
+

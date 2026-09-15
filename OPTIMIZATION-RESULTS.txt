@@ -1,0 +1,61 @@
+AliasOS 0.1-dev / SCMD 0.11.1 optimization results
+===================================================
+
+Comparison uses the same SCMD-native, no-Python AliasOS project and the same
+stats_ops.script workload:
+
+    boot
+    ls
+    cd home
+    cat notes
+    writetok test (line1, line2)
+
+SCMD 0.11 baseline -> current optimized build
+---------------------------------------------
+Cold boot:
+  commands       37983 -> 26975   (-29.0%)
+  aliases        25510 -> 21471   (-15.8%)
+  lazy modules     657 ->   553   (-15.8%)
+
+Cumulative modeled commands:
+  boot           37983 -> 26975
+  after ls       67014 -> 52103
+  after cd      121607 -> 89864
+  after cat     177932 -> 131095
+  after write   278424 -> 206178  (-25.9% total)
+
+Cumulative lazy modules:
+  boot             657 -> 553
+  after ls          862 -> 675
+  after cd         1224 -> 829
+  after cat        1375 -> 875
+  after write      1524 -> 921    (-39.6% total)
+
+Generated package:
+  CFG files       18274 -> 11934  (-34.7%)
+  CFG bytes    44357197 -> 28380736 (-36.0%)
+
+Main changes:
+  - SCMD 0.11.1 lowers direct dynamic array loads as balanced control-flow
+    selection instead of an all-elements combinational mux.
+  - TTY history and several AliasFS metadata paths use typed fixed arrays
+    directly instead of generated scalar dispatch trees.
+  - __aos_tty_redraw_now is resident but no longer exported, removing an
+    unnecessary stable-alias boundary from the hottest redraw path.
+  - __aos_execute_pending plus the cd/cat/write internal command bodies are
+    kept internal; selected export boundaries elsewhere are deliberately
+    retained because they improve demand-load granularity.
+  - No Python/source generator is used.
+
+Rejected experiment:
+  Removing every internal export reduced eager startup further but caused huge
+  first-use dependency bundles (roughly 155 MiB build output in the measured
+  variant). Export therefore remains a useful lazy-module boundary even when a
+  function is not part of the public Console ABI.
+
+Validation:
+  SCMD toolchain Release: 68/68 PASS
+  AliasOS standalone:     12/12 PASS
+
+Real CS2 remains the compatibility authority; simulator command counts are a
+relative backend metric, not a fixed commands-per-second prediction.

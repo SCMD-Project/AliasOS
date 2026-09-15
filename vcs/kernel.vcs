@@ -1,0 +1,16 @@
+; AliasOS 0.1-dev kernel bootstrap, vCS-16/2 OS profile.
+; SYS 1: tty_emit(line_id in r0)
+.memory 32
+.entry start
+start:
+    ldi r0, 64
+    sys 1
+    ldi r0, 65
+    sys 1
+    ldi r0, 66
+    sys 1
+    ldi r0, 67
+    sys 1
+    ldi r0, 68
+    sys 1
+    halt

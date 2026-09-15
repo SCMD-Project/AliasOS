@@ -1,0 +1,20 @@
+touch
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_1 "echoln 114514,hello world!";rawready
+end
+cat
+arg_test
+end
+write
+arg_test
+end
+end
+cancel
+cat
+arg_test
+end
+:screen 32

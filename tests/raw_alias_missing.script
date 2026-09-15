@@ -1,0 +1,9 @@
+touch
+arg_foo
+end
+write
+arg_foo
+end
+end
+cancel
+:screen 32

@@ -1,0 +1,22 @@
+touch
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_1 "echoln GC_OLD";rawready
+end
+cat
+arg_test
+end
+rm
+arg_test
+end
+cls
+touch
+arg_foo
+end
+write
+arg_foo
+end
+:screen 24

@@ -1,0 +1,23 @@
+project "AliasOS"
+{
+    entry = "src/main.scmd";
+    output = "build";
+    package = "aliasos";
+    bootstrap = true;
+
+    target cs2
+    {
+        console
+        {
+            mode = async;
+            settle = 32ms;
+            tick = 16ms;
+        }
+
+        paging
+        {
+            max_bytes = 4096;
+            max_commands = 40;
+        }
+    }
+}

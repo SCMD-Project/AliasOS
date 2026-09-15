@@ -1,0 +1,113 @@
+// AliasOS runtime state. This is real SCMD source; no external source generator is required.
+const INODE_COUNT = 16;
+const DATA_CELLS = 64;
+const HISTORY_RECORDS = 64;
+const RAW_OBJECT_COUNT = 32;
+const PATH_DEPTH_MAX = 8;
+const ARG_COUNT_MAX = 8;
+
+u8 sh_mode = 0; // 0 normal, 1 argv, 2 token write, 3 raw-alias write
+u8 sh_pending = 0;
+u8 sh_argc = 0;
+u8 sh_argv[ARG_COUNT_MAX] = 0;
+u8 input_token = 0;
+u8 write_inode = 255;
+u8 write_count = 0;
+u8 write_raw_obj = 255;
+bool raw_ready = false;
+u8 raw_obj = 255;
+u8 raw_used_count = 0;
+// Raw objects are numbered 1..32; slot 0 is intentionally unused.
+bool raw_used[33] = false;
+bool raw_file[33] = false;
+bool raw_hist[33] = false;
+u8 write_buf[DATA_CELLS] = 0;
+
+bool counter_running = false;
+bool aos_booting = true;
+u8 counter_value = 0;
+
+u8 fs_cwd = 0;
+u8 fs_path_depth = 0;
+u8 fs_path[PATH_DEPTH_MAX] = 0;
+bool fs_path_ok = true;
+u8 fs_target = 0;
+u8 fs_name = 0;
+u8 fs_found = 255;
+u8 fs_alloc = 255;
+u8 fs_used_count = 0;
+bool fs_create_dir = false;
+
+bool fs_used[INODE_COUNT] = false;
+bool fs_dir[INODE_COUNT] = false;
+u8 fs_parent[INODE_COUNT] = 0;
+u8 fs_inode_name[INODE_COUNT] = 0;
+u8 fs_size[INODE_COUNT] = 0;
+bool fs_raw[INODE_COUNT] = false;
+u8 fs_raw_obj[INODE_COUNT] = 0;
+
+// SCMD 0.11 fixed arrays replace more than a thousand generator-emitted scalar declarations.
+u8 fs_data0[DATA_CELLS] = 0;
+u8 fs_data1[DATA_CELLS] = 0;
+u8 fs_data2[DATA_CELLS] = 0;
+u8 fs_data3[DATA_CELLS] = 0;
+u8 fs_data4[DATA_CELLS] = 0;
+u8 fs_data5[DATA_CELLS] = 0;
+u8 fs_data6[DATA_CELLS] = 0;
+u8 fs_data7[DATA_CELLS] = 0;
+u8 fs_data8[DATA_CELLS] = 0;
+u8 fs_data9[DATA_CELLS] = 0;
+u8 fs_data10[DATA_CELLS] = 0;
+u8 fs_data11[DATA_CELLS] = 0;
+u8 fs_data12[DATA_CELLS] = 0;
+u8 fs_data13[DATA_CELLS] = 0;
+u8 fs_data14[DATA_CELLS] = 0;
+u8 fs_data15[DATA_CELLS] = 0;
+
+u8 tty_line = 0;
+u8 tty_head = 0;
+u8 tty_count = 0;
+u8 tty_slot = 0;
+u8 tty_remaining = 0;
+u8 tty_payload = 0;
+u8 tty_h[HISTORY_RECORDS] = 0;
+
+// Compile-time initialization uses ordinary SCMD control/data syntax. These writes happen
+// inside scmdc and do not exist as runtime CFG work.
+compile
+{
+    // Root, /home, /tmp, /docs, and /home/notes.
+    fs_used[0] = true;
+    fs_dir[0] = true;
+
+    fs_used[1] = true;
+    fs_dir[1] = true;
+    fs_parent[1] = 0;
+    fs_inode_name[1] = 1; // home
+
+    fs_used[2] = true;
+    fs_dir[2] = true;
+    fs_parent[2] = 0;
+    fs_inode_name[2] = 2; // tmp
+
+    fs_used[3] = true;
+    fs_dir[3] = true;
+    fs_parent[3] = 0;
+    fs_inode_name[3] = 3; // docs
+
+    fs_used[4] = true;
+    fs_dir[4] = false;
+    fs_parent[4] = 1;
+    fs_inode_name[4] = 4; // notes
+    fs_size[4] = 2;
+    fs_data4[0] = 5;  // hello
+    fs_data4[1] = 11; // world
+
+    // This loop is deliberately redundant at runtime but exercises the actual SCMD compile
+    // interpreter and documents that compile{} uses the normal for(...) grammar.
+    for(var i = 5; i < INODE_COUNT; i += 1)
+    {
+        fs_used[i] = false;
+        fs_dir[i] = false;
+    }
+}

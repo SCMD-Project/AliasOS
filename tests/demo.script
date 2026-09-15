@@ -1,0 +1,27 @@
+ls
+cd+
+arg_home
+end
+pwd
+ls
+cat+
+arg_notes
+end
+touch+
+arg_test
+end
+writetok+
+arg_test
+end
+arg_line1
+arg_line2
+end
+cat+
+arg_test
+end
+df
+ps
+counter
+ps
+vhello
+:screen 24

@@ -1,0 +1,28 @@
+touch
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_1 "echoln OLD_RAW_CONTENT";rawready
+end
+cat
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_2 "echoln SHOULD_NOT_COMMIT";rawready
+cancel
+cat
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_2 "echoln NEW_RAW_CONTENT";rawready
+end
+cat
+arg_test
+end
+:screen 32

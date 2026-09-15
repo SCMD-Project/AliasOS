@@ -1,0 +1,14 @@
+echo+
+arg_hello
+arg_world
+args
+back
+arg_line1
+end
+touch+
+arg_foo
+cancel
+cat+
+arg_foo
+end
+:screen 24

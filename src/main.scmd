@@ -1,0 +1,13 @@
+// AliasOS 0.1-dev firmware entry point.
+// Human-authored runtime modules live under src/runtime/.  Only vCS AOT output lives in
+// src/generated/, produced directly by vcs16scmd during build.
+get "runtime/state.scmd";
+get "runtime/tty.scmd";
+get "runtime/fs.scmd";
+get "runtime/shell.scmd";
+get "runtime/commands.scmd";
+get "runtime/vcs_hosts.scmd";
+get "runtime/boot.scmd";
+get "generated/kernel_vcs.scmd";
+get "generated/hello_vcs.scmd";
+get "generated/sysinfo_vcs.scmd";

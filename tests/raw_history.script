@@ -1,0 +1,25 @@
+touch
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_1 "echoln OLD_IMMUTABLE_RAW";rawready
+end
+cat
+arg_test
+end
+write
+arg_test
+end
+alias aos_str_2 "echoln NEW_FILE_CONTENT";rawready
+end
+cat
+arg_test
+end
+redraw
+rm
+arg_test
+end
+redraw
+:screen 32

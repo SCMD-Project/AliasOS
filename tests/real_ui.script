@@ -1,0 +1,14 @@
+ls
+cd
+arg_bin
+end
+pwd
+ls
+cd
+..
+end
+pwd
+ahelp
+redraw
+cls
+:screen 24

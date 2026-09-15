@@ -1,0 +1,10 @@
+; First vCS-16/2 AliasOS user program.
+; SYS 1: tty_emit(line_id in r0)
+.memory 32
+.entry start
+start:
+    ldi r0, 139
+    sys 1
+    ldi r0, 115
+    sys 1
+    halt

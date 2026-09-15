@@ -1,0 +1,24 @@
+function aos_kernel_host_syscall()
+{
+    if(aos_kernel_sys_hi != 0) { aos_kernel_trapped = true; return; }
+    if(aos_kernel_sys_lo == 1) { if(aos_kernel_r0_hi != 0) { aos_kernel_trapped = true; return; } tty_line = aos_kernel_r0_lo; __aos_tty_emit(); aos_kernel_sysret_lo = 0; aos_kernel_sysret_hi = 0; return; }
+    if(aos_kernel_sys_lo == 2) { aos_kernel_sysret_lo = 0; aos_kernel_sysret_hi = 0; return; }
+    aos_kernel_trapped = true;
+}
+
+function aos_hello_host_syscall()
+{
+    if(aos_hello_sys_hi == 0 && aos_hello_sys_lo == 1 && aos_hello_r0_hi == 0) { tty_line = aos_hello_r0_lo; __aos_tty_emit(); aos_hello_sysret_lo = 0; aos_hello_sysret_hi = 0; __aos_tty_redraw(); return; }
+    aos_hello_trapped = true;
+}
+
+function aos_sysinfo_host_syscall()
+{
+    if(aos_sysinfo_sys_hi != 0) { aos_sysinfo_trapped = true; return; }
+    if(aos_sysinfo_sys_lo == 1) { if(aos_sysinfo_r0_hi != 0) { aos_sysinfo_trapped = true; return; } tty_line = aos_sysinfo_r0_lo; __aos_tty_emit(); aos_sysinfo_sysret_lo = 0; aos_sysinfo_sysret_hi = 0; return; }
+    if(aos_sysinfo_sys_lo == 3) { __aos_fs_count_used(); aos_sysinfo_sysret_lo = fs_used_count; aos_sysinfo_sysret_hi = 0; return; }
+    if(aos_sysinfo_sys_lo == 4) { if(counter_running) { aos_sysinfo_sysret_lo = 1; } else { aos_sysinfo_sysret_lo = 0; } aos_sysinfo_sysret_hi = 0; return; }
+    if(aos_sysinfo_sys_lo == 5) { __aos_tty_redraw(); aos_sysinfo_sysret_lo = 0; aos_sysinfo_sysret_hi = 0; return; }
+    aos_sysinfo_trapped = true;
+}
+

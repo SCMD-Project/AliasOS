@@ -1,0 +1,38 @@
+; AliasOS system information user program for vCS-16/2.
+; SYS 1: tty_emit(line_id in r0)
+; SYS 3: return used AliasFS inode count in r0
+; SYS 4: return counter task running flag in r0
+.memory 32
+.entry start
+start:
+    ldi r0, 108
+    sys 1
+    ldi r0, 64
+    sys 1
+    ldi r0, 104
+    sys 1
+    ldi r0, 105
+    sys 1
+    ldi r0, 66
+    sys 1
+    ldi r0, 67
+    sys 1
+    ldi r0, 110
+    sys 1
+    sys 3
+    addi r0, 140
+    sys 1
+    ldi r0, 87
+    sys 1
+    ldi r0, 88
+    sys 1
+    sys 4
+    ldi r1, 1
+    jeq r0, r1, counter_running
+    sys 5
+    halt
+counter_running:
+    ldi r0, 89
+    sys 1
+    sys 5
+    halt

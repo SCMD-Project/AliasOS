@@ -1,0 +1,1692 @@
+function __aos_raw_pin_history()
+{
+    if(raw_obj == 0 || raw_obj > RAW_OBJECT_COUNT) { return; }
+    raw_used[raw_obj] = true;
+    raw_hist[raw_obj] = true;
+}
+
+function __aos_raw_claim_file()
+{
+    if(raw_obj == 0 || raw_obj > RAW_OBJECT_COUNT) { return; }
+    raw_used[raw_obj] = true;
+    raw_file[raw_obj] = true;
+}
+
+function __aos_raw_release_file()
+{
+    if(raw_obj == 0 || raw_obj > RAW_OBJECT_COUNT) { return; }
+    raw_file[raw_obj] = false;
+    if(!raw_hist[raw_obj]) { raw_used[raw_obj] = false; }
+}
+
+function __aos_raw_release_pending_obj()
+{
+    if(raw_obj == 0 || raw_obj > RAW_OBJECT_COUNT) { return; }
+    if(!raw_file[raw_obj] && !raw_hist[raw_obj]) { raw_used[raw_obj] = false; }
+}
+
+resident function __aos_raw_invoke_obj()
+{
+    if(raw_obj == 1) { command.exec("aos_str_1"); return; }
+    if(raw_obj == 2) { command.exec("aos_str_2"); return; }
+    if(raw_obj == 3) { command.exec("aos_str_3"); return; }
+    if(raw_obj == 4) { command.exec("aos_str_4"); return; }
+    if(raw_obj == 5) { command.exec("aos_str_5"); return; }
+    if(raw_obj == 6) { command.exec("aos_str_6"); return; }
+    if(raw_obj == 7) { command.exec("aos_str_7"); return; }
+    if(raw_obj == 8) { command.exec("aos_str_8"); return; }
+    if(raw_obj == 9) { command.exec("aos_str_9"); return; }
+    if(raw_obj == 10) { command.exec("aos_str_10"); return; }
+    if(raw_obj == 11) { command.exec("aos_str_11"); return; }
+    if(raw_obj == 12) { command.exec("aos_str_12"); return; }
+    if(raw_obj == 13) { command.exec("aos_str_13"); return; }
+    if(raw_obj == 14) { command.exec("aos_str_14"); return; }
+    if(raw_obj == 15) { command.exec("aos_str_15"); return; }
+    if(raw_obj == 16) { command.exec("aos_str_16"); return; }
+    if(raw_obj == 17) { command.exec("aos_str_17"); return; }
+    if(raw_obj == 18) { command.exec("aos_str_18"); return; }
+    if(raw_obj == 19) { command.exec("aos_str_19"); return; }
+    if(raw_obj == 20) { command.exec("aos_str_20"); return; }
+    if(raw_obj == 21) { command.exec("aos_str_21"); return; }
+    if(raw_obj == 22) { command.exec("aos_str_22"); return; }
+    if(raw_obj == 23) { command.exec("aos_str_23"); return; }
+    if(raw_obj == 24) { command.exec("aos_str_24"); return; }
+    if(raw_obj == 25) { command.exec("aos_str_25"); return; }
+    if(raw_obj == 26) { command.exec("aos_str_26"); return; }
+    if(raw_obj == 27) { command.exec("aos_str_27"); return; }
+    if(raw_obj == 28) { command.exec("aos_str_28"); return; }
+    if(raw_obj == 29) { command.exec("aos_str_29"); return; }
+    if(raw_obj == 30) { command.exec("aos_str_30"); return; }
+    if(raw_obj == 31) { command.exec("aos_str_31"); return; }
+    if(raw_obj == 32) { command.exec("aos_str_32"); return; }
+}
+
+resident function __aos_tty_render_line()
+{
+    if(tty_line < 101) {
+        if(tty_line < 51) {
+            if(tty_line < 26) {
+                if(tty_line < 13) {
+                    if(tty_line < 7) {
+                        if(tty_line < 4) {
+                            if(tty_line < 2) {
+                                if(tty_line == 1) {
+                                    console.print("home");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 3) {
+                                    if(tty_line == 2) {
+                                        console.print("tmp");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 3) {
+                                        console.print("docs");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 5) {
+                                if(tty_line == 4) {
+                                    console.print("notes");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 6) {
+                                    if(tty_line == 5) {
+                                        console.print("hello");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 6) {
+                                        console.print("readme");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 10) {
+                            if(tty_line < 8) {
+                                if(tty_line == 7) {
+                                    console.print("project");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 9) {
+                                    if(tty_line == 8) {
+                                        console.print("test");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 9) {
+                                        console.print("foo");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 11) {
+                                if(tty_line == 10) {
+                                    console.print("bar");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 12) {
+                                    if(tty_line == 11) {
+                                        console.print("world");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 12) {
+                                        console.print("aliasos");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 19) {
+                        if(tty_line < 16) {
+                            if(tty_line < 14) {
+                                if(tty_line == 13) {
+                                    console.print("scmd");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 15) {
+                                    if(tty_line == 14) {
+                                        console.print("vcs16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 15) {
+                                        console.print("line1");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 17) {
+                                if(tty_line == 16) {
+                                    console.print("line2");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 18) {
+                                    if(tty_line == 17) {
+                                        console.print("root");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 18) {
+                                        console.print("..");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 22) {
+                            if(tty_line < 20) {
+                                if(tty_line == 19) {
+                                    console.print("motd");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 21) {
+                                    if(tty_line == 20) {
+                                        console.print("counter");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 21) {
+                                        console.print("bin");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 24) {
+                                if(tty_line < 23) {
+                                    if(tty_line == 22) {
+                                        console.print("etc");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 23) {
+                                        console.print("proc");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 25) {
+                                    if(tty_line == 24) {
+                                        console.print("version");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 25) {
+                                        console.print("hostname");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(tty_line < 38) {
+                    if(tty_line < 32) {
+                        if(tty_line < 29) {
+                            if(tty_line < 27) {
+                                if(tty_line == 26) {
+                                    console.print("status");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 28) {
+                                    if(tty_line == 27) {
+                                        console.print("meminfo");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 28) {
+                                        console.print("tasks");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 30) {
+                                if(tty_line == 29) {
+                                    console.print("$ writetok");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 31) {
+                                    if(tty_line == 30) {
+                                        console.print("write mode: define the shown Source alias then run rawready on the same line");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 31) {
+                                        console.print("define the alias command then run rawready on the same Console line");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 35) {
+                            if(tty_line < 33) {
+                                if(tty_line == 32) {
+                                    console.print("after rawready confirms the slot type end to commit or cancel to abort");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 34) {
+                                    if(tty_line == 33) {
+                                        console.print("home/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 34) {
+                                        console.print("tmp/");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 36) {
+                                if(tty_line == 35) {
+                                    console.print("docs/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 37) {
+                                    if(tty_line == 36) {
+                                        console.print("notes/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 37) {
+                                        console.print("hello/");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 44) {
+                        if(tty_line < 41) {
+                            if(tty_line < 39) {
+                                if(tty_line == 38) {
+                                    console.print("readme/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 40) {
+                                    if(tty_line == 39) {
+                                        console.print("project/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 40) {
+                                        console.print("test/");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 42) {
+                                if(tty_line == 41) {
+                                    console.print("foo/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 43) {
+                                    if(tty_line == 42) {
+                                        console.print("bar/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 43) {
+                                        console.print("world/");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 47) {
+                            if(tty_line < 45) {
+                                if(tty_line == 44) {
+                                    console.print("aliasos/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 46) {
+                                    if(tty_line == 45) {
+                                        console.print("scmd/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 46) {
+                                        console.print("vcs16/");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 49) {
+                                if(tty_line < 48) {
+                                    if(tty_line == 47) {
+                                        console.print("line1/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 48) {
+                                        console.print("line2/");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 50) {
+                                    if(tty_line == 49) {
+                                        console.print("root/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 50) {
+                                        console.print("../");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if(tty_line < 76) {
+                if(tty_line < 63) {
+                    if(tty_line < 57) {
+                        if(tty_line < 54) {
+                            if(tty_line < 52) {
+                                if(tty_line == 51) {
+                                    console.print("motd/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 53) {
+                                    if(tty_line == 52) {
+                                        console.print("counter/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 53) {
+                                        console.print("bin/");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 55) {
+                                if(tty_line == 54) {
+                                    console.print("etc/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 56) {
+                                    if(tty_line == 55) {
+                                        console.print("proc/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 56) {
+                                        console.print("version/");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 60) {
+                            if(tty_line < 58) {
+                                if(tty_line == 57) {
+                                    console.print("hostname/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 59) {
+                                    if(tty_line == 58) {
+                                        console.print("status/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 59) {
+                                        console.print("meminfo/");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 61) {
+                                if(tty_line == 60) {
+                                    console.print("tasks/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 62) {
+                                    if(tty_line == 61) {
+                                        console.print("raw alias not ready - define the shown slot and run rawready before end");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 62) {
+                                        console.print("raw alias ready - type end to commit");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 69) {
+                        if(tty_line < 66) {
+                            if(tty_line < 64) {
+                                if(tty_line == 63) {
+                                    console.print("$ sysinfo");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 65) {
+                                    if(tty_line == 64) {
+                                        console.print("AliasOS 0.1-dev");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 65) {
+                                        console.print("vCS-16/2 + SCMD alias runtime");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 67) {
+                                if(tty_line == 66) {
+                                    console.print("tty0: 4096-byte logical history (64 x 64B records)");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 68) {
+                                    if(tty_line == 67) {
+                                        console.print("AliasFS: 16 inodes / 1024 token cells");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 68) {
+                                        console.print("type ahelp (or ah / aguide / aliasos_help) for commands and examples");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 72) {
+                            if(tty_line < 70) {
+                                if(tty_line == 69) {
+                                    console.print("token input is only valid while a command is collecting arguments");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 71) {
+                                    if(tty_line == 70) {
+                                        console.print("path/argument mode: enter arg_<name> components one per line, then end");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 71) {
+                                        console.print("too many arguments");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 74) {
+                                if(tty_line < 73) {
+                                    if(tty_line == 72) {
+                                        console.print("cancelled");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 73) {
+                                        console.print("missing operand");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 75) {
+                                    if(tty_line == 74) {
+                                        console.print("not found");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 75) {
+                                        console.print("already exists");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(tty_line < 88) {
+                    if(tty_line < 82) {
+                        if(tty_line < 79) {
+                            if(tty_line < 77) {
+                                if(tty_line == 76) {
+                                    console.print("no free inodes");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 78) {
+                                    if(tty_line == 77) {
+                                        console.print("file created");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 78) {
+                                        console.print("directory created");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 80) {
+                                if(tty_line == 79) {
+                                    console.print("removed");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 81) {
+                                    if(tty_line == 80) {
+                                        console.print("directory not empty");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 81) {
+                                        console.print("not a directory");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 85) {
+                            if(tty_line < 83) {
+                                if(tty_line == 82) {
+                                    console.print("is a directory");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 84) {
+                                    if(tty_line == 83) {
+                                        console.print("write mode: enter line tokens, then end to save");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 84) {
+                                        console.print("saved");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 86) {
+                                if(tty_line == 85) {
+                                    console.print("write buffer full");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 87) {
+                                    if(tty_line == 86) {
+                                        console.print("AliasFS capacity: 16 inodes, 1024 token cells");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 87) {
+                                        console.print("PID  STATE    APP");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 94) {
+                        if(tty_line < 91) {
+                            if(tty_line < 89) {
+                                if(tty_line == 88) {
+                                    console.print("1    RUNNING  sh");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 90) {
+                                    if(tty_line == 89) {
+                                        console.print("2    WAITING  counter");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 90) {
+                                        console.print("counter is not running");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 92) {
+                                if(tty_line == 91) {
+                                    console.print("[counter] 0");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 93) {
+                                    if(tty_line == 92) {
+                                        console.print("[counter] 1");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 93) {
+                                        console.print("[counter] 2");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 97) {
+                            if(tty_line < 95) {
+                                if(tty_line == 94) {
+                                    console.print("[counter] 3");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 96) {
+                                    if(tty_line == 95) {
+                                        console.print("[counter] 4");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 96) {
+                                        console.print("[counter] 5");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 99) {
+                                if(tty_line < 98) {
+                                    if(tty_line == 97) {
+                                        console.print("[counter] done");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 98) {
+                                        console.print("counter already running");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 100) {
+                                    if(tty_line == 99) {
+                                        console.print("AliasOS command guide:");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 100) {
+                                        console.print("  path tools: cd mkdir touch cat write rm rmdir, add components one per line");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        if(tty_line < 151) {
+            if(tty_line < 126) {
+                if(tty_line < 113) {
+                    if(tty_line < 107) {
+                        if(tty_line < 104) {
+                            if(tty_line < 102) {
+                                if(tty_line == 101) {
+                                    console.print("  example: cd -> arg_home -> arg_docs -> end, parent: cd -> .. -> end");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 103) {
+                                    if(tty_line == 102) {
+                                        console.print("  write: arbitrary runtime text uses Source alias + rawready + end. advanced token mode: writetok");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 103) {
+                                        console.print("  other: ls pwd ps taskkill df sysinfo cls redraw counter osver vhello");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 105) {
+                                if(tty_line == 104) {
+                                    console.print("vCS-16/2: flags-free CFG-oriented virtual execution architecture");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 106) {
+                                    if(tty_line == 105) {
+                                        console.print("SCMD: mandatory demand loading + stable exported command aliases");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 106) {
+                                        console.print("raw string pool exhausted - run cls to release history");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 110) {
+                            if(tty_line < 108) {
+                                if(tty_line == 107) {
+                                    console.print("path not found or component is not a directory");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 109) {
+                                    if(tty_line == 108) {
+                                        console.print("AliasOS system information:");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 109) {
+                                        console.print("args:");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 111) {
+                                if(tty_line == 110) {
+                                    console.print("raw strings: 32 immutable runtime objects");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 112) {
+                                    if(tty_line == 111) {
+                                        console.print("invalid command state");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 112) {
+                                        console.print("bin/");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 119) {
+                        if(tty_line < 116) {
+                            if(tty_line < 114) {
+                                if(tty_line == 113) {
+                                    console.print("etc/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 115) {
+                                    if(tty_line == 114) {
+                                        console.print("proc/");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 115) {
+                                        console.print("hello from vCS-16/2 userland");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 117) {
+                                if(tty_line == 116) {
+                                    console.print("argument mode active: enter arg_<token>, end, back, args, or cancel");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 118) {
+                                    if(tty_line == 117) {
+                                        console.print("read-only filesystem");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 118) {
+                                        console.print("cwd:");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 122) {
+                            if(tty_line < 120) {
+                                if(tty_line == 119) {
+                                    console.print("/");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 121) {
+                                    if(tty_line == 120) {
+                                        console.print("$ ahelp");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 121) {
+                                        console.print("$ ls");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 124) {
+                                if(tty_line < 123) {
+                                    if(tty_line == 122) {
+                                        console.print("$ ls+");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 123) {
+                                        console.print("$ pwd");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 125) {
+                                    if(tty_line == 124) {
+                                        console.print("$ cd");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 125) {
+                                        console.print("$ mkdir");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(tty_line < 138) {
+                    if(tty_line < 132) {
+                        if(tty_line < 129) {
+                            if(tty_line < 127) {
+                                if(tty_line == 126) {
+                                    console.print("$ touch");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 128) {
+                                    if(tty_line == 127) {
+                                        console.print("$ cat");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 128) {
+                                        console.print("$ write");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 130) {
+                                if(tty_line == 129) {
+                                    console.print("$ rm");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 131) {
+                                    if(tty_line == 130) {
+                                        console.print("$ rmdir");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 131) {
+                                        console.print("$ ps");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 135) {
+                            if(tty_line < 133) {
+                                if(tty_line == 132) {
+                                    console.print("$ taskkill");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 134) {
+                                    if(tty_line == 133) {
+                                        console.print("$ df");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 134) {
+                                        console.print("$ cls");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 136) {
+                                if(tty_line == 135) {
+                                    console.print("$ redraw");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 137) {
+                                    if(tty_line == 136) {
+                                        console.print("$ echo+");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 137) {
+                                        console.print("$ counter");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 144) {
+                        if(tty_line < 141) {
+                            if(tty_line < 139) {
+                                if(tty_line == 138) {
+                                    console.print("$ osver");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 140) {
+                                    if(tty_line == 139) {
+                                        console.print("$ vhello");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 140) {
+                                        console.print("AliasFS inodes: 0/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 142) {
+                                if(tty_line == 141) {
+                                    console.print("AliasFS inodes: 1/16");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 143) {
+                                    if(tty_line == 142) {
+                                        console.print("AliasFS inodes: 2/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 143) {
+                                        console.print("AliasFS inodes: 3/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 147) {
+                            if(tty_line < 145) {
+                                if(tty_line == 144) {
+                                    console.print("AliasFS inodes: 4/16");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 146) {
+                                    if(tty_line == 145) {
+                                        console.print("AliasFS inodes: 5/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 146) {
+                                        console.print("AliasFS inodes: 6/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 149) {
+                                if(tty_line < 148) {
+                                    if(tty_line == 147) {
+                                        console.print("AliasFS inodes: 7/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 148) {
+                                        console.print("AliasFS inodes: 8/16");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 150) {
+                                    if(tty_line == 149) {
+                                        console.print("AliasFS inodes: 9/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 150) {
+                                        console.print("AliasFS inodes: 10/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if(tty_line < 176) {
+                if(tty_line < 163) {
+                    if(tty_line < 157) {
+                        if(tty_line < 154) {
+                            if(tty_line < 152) {
+                                if(tty_line == 151) {
+                                    console.print("AliasFS inodes: 11/16");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 153) {
+                                    if(tty_line == 152) {
+                                        console.print("AliasFS inodes: 12/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 153) {
+                                        console.print("AliasFS inodes: 13/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 155) {
+                                if(tty_line == 154) {
+                                    console.print("AliasFS inodes: 14/16");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 156) {
+                                    if(tty_line == 155) {
+                                        console.print("AliasFS inodes: 15/16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 156) {
+                                        console.print("AliasFS inodes: 16/16");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 160) {
+                            if(tty_line < 158) {
+                                if(tty_line == 157) {
+                                    console.print("> home");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 159) {
+                                    if(tty_line == 158) {
+                                        console.print("> tmp");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 159) {
+                                        console.print("> docs");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 161) {
+                                if(tty_line == 160) {
+                                    console.print("> notes");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 162) {
+                                    if(tty_line == 161) {
+                                        console.print("> hello");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 162) {
+                                        console.print("> readme");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 169) {
+                        if(tty_line < 166) {
+                            if(tty_line < 164) {
+                                if(tty_line == 163) {
+                                    console.print("> project");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 165) {
+                                    if(tty_line == 164) {
+                                        console.print("> test");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 165) {
+                                        console.print("> foo");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 167) {
+                                if(tty_line == 166) {
+                                    console.print("> bar");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 168) {
+                                    if(tty_line == 167) {
+                                        console.print("> world");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 168) {
+                                        console.print("> aliasos");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 172) {
+                            if(tty_line < 170) {
+                                if(tty_line == 169) {
+                                    console.print("> scmd");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 171) {
+                                    if(tty_line == 170) {
+                                        console.print("> vcs16");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 171) {
+                                        console.print("> line1");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 174) {
+                                if(tty_line < 173) {
+                                    if(tty_line == 172) {
+                                        console.print("> line2");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 173) {
+                                        console.print("> root");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 175) {
+                                    if(tty_line == 174) {
+                                        console.print("> dotdot");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 175) {
+                                        console.print("> motd");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                if(tty_line < 188) {
+                    if(tty_line < 182) {
+                        if(tty_line < 179) {
+                            if(tty_line < 177) {
+                                if(tty_line == 176) {
+                                    console.print("> counter");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 178) {
+                                    if(tty_line == 177) {
+                                        console.print("> bin");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 178) {
+                                        console.print("> etc");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 180) {
+                                if(tty_line == 179) {
+                                    console.print("> proc");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 181) {
+                                    if(tty_line == 180) {
+                                        console.print("> version");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 181) {
+                                        console.print("> hostname");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 185) {
+                            if(tty_line < 183) {
+                                if(tty_line == 182) {
+                                    console.print("> status");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 184) {
+                                    if(tty_line == 183) {
+                                        console.print("> meminfo");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 184) {
+                                        console.print("> tasks");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 186) {
+                                if(tty_line == 185) {
+                                    console.print("arg@alias:>");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 187) {
+                                    if(tty_line == 186) {
+                                        console.print("write@alias:>");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 187) {
+                                        console.print("> end");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if(tty_line < 194) {
+                        if(tty_line < 191) {
+                            if(tty_line < 189) {
+                                if(tty_line == 188) {
+                                    console.print("> back");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 190) {
+                                    if(tty_line == 189) {
+                                        console.print("> args");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 190) {
+                                        console.print("> cancel");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 192) {
+                                if(tty_line == 191) {
+                                    console.print("sh");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 193) {
+                                    if(tty_line == 192) {
+                                        console.print("ls");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 193) {
+                                        console.print("pwd");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        if(tty_line < 197) {
+                            if(tty_line < 195) {
+                                if(tty_line == 194) {
+                                    console.print("cd");
+                                    return;
+                                }
+                            } else {
+                                if(tty_line < 196) {
+                                    if(tty_line == 195) {
+                                        console.print("cat");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 196) {
+                                        console.print("write");
+                                        return;
+                                    }
+                                }
+                            }
+                        } else {
+                            if(tty_line < 199) {
+                                if(tty_line < 198) {
+                                    if(tty_line == 197) {
+                                        console.print("ps");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 198) {
+                                        console.print("taskkill");
+                                        return;
+                                    }
+                                }
+                            } else {
+                                if(tty_line < 200) {
+                                    if(tty_line == 199) {
+                                        console.print("df");
+                                        return;
+                                    }
+                                } else {
+                                    if(tty_line == 200) {
+                                        console.print("sysinfo");
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function __aos_tty_store_history()
+{
+    tty_h[tty_head] = tty_payload;
+    tty_head = (tty_head + 1) & 63;
+    if(tty_count < HISTORY_RECORDS) { tty_count += 1; }
+}
+
+resident function __aos_tty_load_history_slot()
+{
+    tty_payload = tty_h[tty_slot];
+}
+
+function __aos_tty_emit()
+{
+    tty_payload = tty_line; __aos_tty_store_history();
+}
+
+function __aos_tty_emit_raw()
+{
+    __aos_raw_pin_history(); tty_payload = raw_obj + 223; __aos_tty_store_history();
+}
+
+function __aos_tty_clear_history()
+{
+    for(var i = 0; i < HISTORY_RECORDS; i += 1)
+    {
+        tty_h[i] = 0;
+    }
+    for(var j = 1; j <= RAW_OBJECT_COUNT; j += 1)
+    {
+        raw_hist[j] = false;
+        if(!raw_file[j]) { raw_used[j] = false; }
+    }
+    tty_head = 0;
+    tty_count = 0;
+}
+
+resident function __aos_tty_draw_prompt()
+{
+    if(sh_mode == 1) { tty_line = 185; __aos_tty_render_line(); return; }
+    if(sh_mode == 2) { tty_line = 186; __aos_tty_render_line(); return; }
+    if(sh_mode == 3) {
+        console.print("raw alias slot:");
+        if(write_raw_obj == 1) {
+            console.print("aos_str_1");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 2) {
+            console.print("aos_str_2");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 3) {
+            console.print("aos_str_3");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 4) {
+            console.print("aos_str_4");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 5) {
+            console.print("aos_str_5");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 6) {
+            console.print("aos_str_6");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 7) {
+            console.print("aos_str_7");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 8) {
+            console.print("aos_str_8");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 9) {
+            console.print("aos_str_9");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 10) {
+            console.print("aos_str_10");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 11) {
+            console.print("aos_str_11");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 12) {
+            console.print("aos_str_12");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 13) {
+            console.print("aos_str_13");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 14) {
+            console.print("aos_str_14");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 15) {
+            console.print("aos_str_15");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 16) {
+            console.print("aos_str_16");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 17) {
+            console.print("aos_str_17");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 18) {
+            console.print("aos_str_18");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 19) {
+            console.print("aos_str_19");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 20) {
+            console.print("aos_str_20");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 21) {
+            console.print("aos_str_21");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 22) {
+            console.print("aos_str_22");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 23) {
+            console.print("aos_str_23");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 24) {
+            console.print("aos_str_24");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 25) {
+            console.print("aos_str_25");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 26) {
+            console.print("aos_str_26");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 27) {
+            console.print("aos_str_27");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 28) {
+            console.print("aos_str_28");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 29) {
+            console.print("aos_str_29");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 30) {
+            console.print("aos_str_30");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 31) {
+            console.print("aos_str_31");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        if(write_raw_obj == 32) {
+            console.print("aos_str_32");
+            console.print("define it with Source alias then run rawready");
+            console.print("raw@alias:>"); return;
+        }
+        console.print("raw@alias:>"); return;
+    }
+    console.print("root@alias:$");
+}
+
+resident function __aos_tty_redraw_now()
+{
+    if(tty_count > 24) { tty_remaining = 24; } else { tty_remaining = tty_count; }
+    tty_slot = (tty_head - tty_remaining) & 63;
+    while(tty_remaining > 0)
+    {
+        __aos_tty_load_history_slot();
+        if(tty_payload >= 224) { raw_obj = tty_payload - 223; __aos_raw_invoke_obj(); } else { tty_line = tty_payload; if(tty_line != 0) { __aos_tty_render_line(); } }
+        tty_slot = (tty_slot + 1) & 63;
+        tty_remaining -= 1;
+    }
+    __aos_tty_draw_prompt();
+}
+
+resident function __aos_tty_redraw()
+{
+    console.clear();
+    __aos_tty_redraw_now();
+}
+
