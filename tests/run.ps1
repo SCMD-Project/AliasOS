@@ -39,6 +39,7 @@ foreach ($entry in $Cases.GetEnumerator()) {
     foreach ($needle in $entry.Value) {
         if (-not $output.Contains($needle)) { throw "$script missing expected output '$needle'`n$output" }
     }
+    if ($output.Contains('Unknown command')) { throw "$script hit an unresolved command (stale cfg-to-function reference?)`n$output" }
 
     $screens = $output -split "(?m)^\[screen\]\r?$"
     if ($screens.Count -gt 1) {
