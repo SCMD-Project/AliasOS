@@ -102,11 +102,16 @@ jobs:
           TOOLCHAIN_TAG: ${{ env.TOOLCHAIN_TAG }}
         run: |
           $ErrorActionPreference = 'Stop'
-          $candidate = '${{ inputs.toolchain_tag }}'
+          $requested = '${{ inputs.toolchain_tag }}'
+          $candidate = $requested
           if (-not $candidate) {
             $candidate = (Invoke-RestMethod -Uri 'https://api.github.com/repos/SCMD-Project/SCMD-Toolchain/releases/latest').tag_name
           }
-          $needed = if ($candidate -ne $env:TOOLCHAIN_TAG) { 'true' } else { 'false' }
+          # An explicitly requested tag is always validated; the daily
+          # schedule only fires when the latest release differs from the pin.
+          $needed = if ($requested) { 'true' } else {
+            if ($candidate -ne $env:TOOLCHAIN_TAG) { 'true' } else { 'false' }
+          }
           Write-Host "candidate=$candidate pinned=$($env:TOOLCHAIN_TAG) needed=$needed"
           Add-Content -Path $env:GITHUB_OUTPUT -Value "candidate=$candidate"
           Add-Content -Path $env:GITHUB_OUTPUT -Value "needed=$needed"
