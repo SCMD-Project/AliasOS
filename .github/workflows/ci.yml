@@ -1,0 +1,149 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      toolchain_tag:
+        description: 'Toolchain release tag to validate (default: pinned TOOLCHAIN_TAG)'
+        required: false
+        default: ''
+  schedule:
+    # Daily canary check for new SCMD-Toolchain releases (see #4 / TC#9).
+    - cron: '23 3 * * *'
+
+permissions:
+  contents: read
+
+env:
+  # Pinned SCMD-Toolchain release. Bump only after a green canary run;
+  # matrix and known issues: docs/compatibility.md in SCMD-Project/SCMD-Toolchain.
+  TOOLCHAIN_TAG: v0.13.0
+  # dist/cs2 size budget: AliasOS 0.1-dev baseline ~49 MB / 11933 cfg
+  # (OPTIMIZATION-RESULTS.txt); warn at +10%.
+  SIZE_BUDGET_MB: 53.9
+  SIZE_BUDGET_CFG: 13126
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    name: Build + regressions / windows
+    runs-on: windows-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup pinned toolchain
+        id: tc
+        uses: SCMD-Project/SCMD-Toolchain/.github/actions/setup-toolchain@v0.13.0
+        with:
+          toolchain-tag: ${{ inputs.toolchain_tag || env.TOOLCHAIN_TAG }}
+
+      - name: Build + regressions
+        run: ./build.ps1 -ToolchainDir "${{ steps.tc.outputs.toolchain-dir }}"
+
+      - name: Size budget report
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $files = Get-ChildItem dist/cs2 -Recurse -File
+          $cfg = ($files | Where-Object Extension -eq '.cfg').Count
+          $mb = [math]::Round((($files | Measure-Object Length -Sum).Sum) / 1MB, 2)
+          $budgetMb = [double] $env:SIZE_BUDGET_MB
+          $budgetCfg = [int] $env:SIZE_BUDGET_CFG
+          "### AliasOS dist/cs2 size report" >> $env:GITHUB_STEP_SUMMARY
+          "" >> $env:GITHUB_STEP_SUMMARY
+          "| toolchain | size (MB) | cfg files | budget |" >> $env:GITHUB_STEP_SUMMARY
+          "|---|---|---|---|" >> $env:GITHUB_STEP_SUMMARY
+          "| ${{ steps.tc.outputs.resolved-tag }} | $mb | $cfg | ${budgetMb} MB / ${budgetCfg} cfg |" >> $env:GITHUB_STEP_SUMMARY
+          if ($mb -gt $budgetMb -or $cfg -gt $budgetCfg) {
+            Write-Host "::warning::size budget exceeded: $mb MB / $cfg cfg (budget ${budgetMb} MB / ${budgetCfg} cfg)"
+          }
+
+      - name: Upload dist/cs2
+        uses: actions/upload-artifact@v4
+        with:
+          name: aliasos-cs2-${{ github.sha }}
+          path: dist/cs2/
+          if-no-files-found: error
+          retention-days: 14
+
+  canary:
+    name: Toolchain canary
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: windows-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Resolve candidate tag
+        id: resolve
+        env:
+          TOOLCHAIN_TAG: ${{ env.TOOLCHAIN_TAG }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $candidate = '${{ inputs.toolchain_tag }}'
+          if (-not $candidate) {
+            $candidate = (Invoke-RestMethod -Uri 'https://api.github.com/repos/SCMD-Project/SCMD-Toolchain/releases/latest').tag_name
+          }
+          $needed = if ($candidate -ne $env:TOOLCHAIN_TAG) { 'true' } else { 'false' }
+          Write-Host "candidate=$candidate pinned=$($env:TOOLCHAIN_TAG) needed=$needed"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "candidate=$candidate"
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "needed=$needed"
+
+      - name: Setup candidate toolchain
+        if: steps.resolve.outputs.needed == 'true'
+        id: tc
+        uses: SCMD-Project/SCMD-Toolchain/.github/actions/setup-toolchain@v0.13.0
+        with:
+          toolchain-tag: ${{ steps.resolve.outputs.candidate }}
+
+      - name: Build + regressions with candidate
+        if: steps.resolve.outputs.needed == 'true'
+        id: build
+        continue-on-error: true
+        run: ./build.ps1 -ToolchainDir "${{ steps.tc.outputs.toolchain-dir }}"
+
+      - name: Report canary outcome
+        if: always() && steps.resolve.outputs.needed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATE: ${{ steps.resolve.outputs.candidate }}
+          PINNED: ${{ env.TOOLCHAIN_TAG }}
+          OUTCOME: ${{ steps.build.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if ($env:OUTCOME -eq 'success') {
+            "### Toolchain canary: $env:CANDIDATE is GREEN" >> $env:GITHUB_STEP_SUMMARY
+            "AliasOS passes all regressions with $env:CANDIDATE — consider bumping TOOLCHAIN_TAG from $env:PINNED (one-line env change in .github/workflows/ci.yml)." >> $env:GITHUB_STEP_SUMMARY
+            exit 0
+          }
+          "### Toolchain canary: $env:CANDIDATE is RED" >> $env:GITHUB_STEP_SUMMARY
+          $title = "Toolchain canary red $env:CANDIDATE"
+          $existing = gh issue list --state open --search "in:title $title" --json number --jq 'length'
+          if ($existing -eq 0) {
+            $body = "AliasOS regressions fail with SCMD-Toolchain $env:CANDIDATE (pinned: $env:PINNED).`n`nRun: $env:RUN_URL`n`nThe pinned version stays unchanged. Known issues: docs/compatibility.md in SCMD-Project/SCMD-Toolchain."
+            gh issue create --title $title --body $body
+          } else {
+            Write-Host "canary issue already open, skipping"
+          }
